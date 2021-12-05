@@ -15,7 +15,6 @@ api = tweepy.API(auth)
 
 dirname = os.path.dirname(__file__)
 DIRECTORY = os.path.join(dirname, 'pictures/')
-print(DIRECTORY)
 FILE_NAME = 'last_seen_id.txt'
 
 
