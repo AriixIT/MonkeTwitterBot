@@ -13,7 +13,9 @@ auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
 api = tweepy.API(auth)
 
-DIRECTORY = "pictures\\"
+dirname = os.path.dirname(__file__)
+DIRECTORY = os.path.join(dirname, 'pictures\\')
+print(DIRECTORY)
 FILE_NAME = 'last_seen_id.txt'
 
 
