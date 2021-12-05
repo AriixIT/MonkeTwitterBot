@@ -32,8 +32,6 @@ def store_last_seen_id(last_seen_id):
 
 
 def reply_to_tweets():
-    #quoteFile = open("testFile.txt")
-    # api.update_status(quoteFile.read())
     last_seen_id = retrieve_last_seen_id()
     mentions = api.mentions_timeline(since_id = last_seen_id)
     for mention in reversed(mentions):
