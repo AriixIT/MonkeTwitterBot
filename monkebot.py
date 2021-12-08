@@ -36,16 +36,15 @@ def reply_to_tweets():
     last_seen_id = retrieve_last_seen_id()
     mentions = api.mentions_timeline(since_id = last_seen_id)
     for mention in reversed(mentions):
-        if "Monke" in mention.text:
-            print('replying to ' + str(mention.id))
-            try:
-                filename = random.choice([x for x in os.listdir(DIRECTORY) if os.path.isfile(os.path.join(DIRECTORY, x))])
-                response = api.media_upload(DIRECTORY + filename)
-                if api.update_status("Monke", media_ids = [response.media_id], in_reply_to_status_id = mention.id, auto_populate_reply_metadata=True):
-                    last_seen_id = mention.id
-                    store_last_seen_id(last_seen_id)
-            except tweepy.errors.TweepyException:
-                print("fuck")
+        print('replying to ' + str(mention.id))
+        try:
+            filename = random.choice([x for x in os.listdir(DIRECTORY) if os.path.isfile(os.path.join(DIRECTORY, x))])
+            response = api.media_upload(DIRECTORY + filename)
+            if api.update_status("Monke", media_ids = [response.media_id], in_reply_to_status_id = mention.id, auto_populate_reply_metadata=True):
+                last_seen_id = mention.id
+                store_last_seen_id(last_seen_id)
+        except tweepy.errors.TweepyException:
+            print("fuck")
 
 
 while(True):
